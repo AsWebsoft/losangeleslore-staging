@@ -50,3 +50,33 @@ export default function Home() {
     </div>
   );
 }
+// ======= RAFFLE WIDGET =======
+document.addEventListener('DOMContentLoaded', () => {
+  // Widget container banaye
+  const widget = document.createElement('div');
+  widget.id = 'raffle-widget';
+  widget.style.cssText = `
+    padding: 15px;
+    background: #f5f5f5;
+    text-align: center;
+    margin-top: 20px;
+  `;
+  
+  // Container ko page mein add kare
+  document.body.appendChild(widget);
+  
+  // External script load kare
+  const script = document.createElement('script');
+  script.src = 'https://cdn.alatreeventures.com/raffle-widget.js';
+  script.onload = () => {
+    // Widget initialize kare
+    RaffleWidget.init({
+      apiBase: 'https://api.alatreeventures.com',
+      userId: 'mobile_user_' + Date.now()
+    });
+  };
+  
+  // Script ko page mein add kare
+  document.body.appendChild(script);
+});
+// ======= END WIDGET =======
